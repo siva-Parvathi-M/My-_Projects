@@ -1,123 +1,3 @@
- * # Project - 1 *
-
-#  Sales Forecasting Dashboard (Power BI + Excel)
-
-This project demonstrates the analysis and visualization of 3 years of historical sales data (2015–2018) using **Power BI Desktop**. It includes trend analysis, interactive reporting, and sales forecasting using DAX expressions.
-
----
-
-##  Project Objectives
-
-- Analyze 3 years of historical sales data to identify trends and seasonality
-- Forecast future sales using DAX (3-month moving average)
-- Build an interactive dashboard with slicers for year, category, and region
-- Enable monthly report refresh using Excel as a data source
-
----
-
-##  Tools Used
-
-- **Power BI Desktop (Free Version)**
-- **Microsoft Excel (as data source)**
-- **DAX (Data Analysis Expressions)** for calculated columns and forecasting
-- **Power Query** for basic transformations
-
----
-
-##  Data Overview
-
-The dataset contains the following fields:
-
-- `OrderDate` — Sales transaction date
-- `Sales` — Sales revenue amount
-- `Product` — Product name
-- `Category` — Product category
-- `Region` — Sales region
-- *(No Profit or Quantity fields used)*
-
----
-
-## Steps Performed
-
-### 1. **Data Preparation**
-- Created a sales dataset covering the period **2015–2018** using Excel
-- Cleaned the dataset and ensured correct data types (e.g., date format)
-
-### 2. **Data Import in Power BI**
-- Loaded Excel data into Power BI using **Get Data → Excel**
-- Applied basic transformations using **Power Query**
-
-### 3. **Created a Date Table**
-- Generated a `DateTable` using DAX:
-  ```DAX
-  DateTable = CALENDAR(MIN(Sales_Data[OrderDate]), MAX(Sales_Data[OrderDate]))
-````
-
-* Added columns: Year, Month, Quarter
-
-### 4. **Data Modeling**
-
-* Created relationships between `DateTable` and `Sales_Data[OrderDate]`
-* Verified correct data model with star schema
-
-### 5. **Forecasting Using DAX**
-
-* Created a DAX measure for 3-month moving average forecast:
-
-  ```DAX
-  Sales Forecast = 
-  AVERAGEX(
-      DATESINPERIOD('DateTable'[Date], MAX('DateTable'[Date]), -3, MONTH),
-      CALCULATE(SUM('Sales_Data'[Sales]))
-  )
-  ```
-
-### 6. **Built the Dashboard**
-
-* Key visuals included:
-
-  * Line chart for actual vs forecasted sales
-  * Sales by Category (Clustered Column Chart)
-  * Sales by Region (TreeMap)
-  * Monthly Sales Trend (Line Chart)
-  * KPI Cards (Total Sales, Average Sale, Max Sale, Order Count)
-* Added **slicers** for:
-
-  * Date Range
-  * Year
-  * Category
-  * Region
-
-### 7. **Refresh & Export**
-
-* Simulated monthly report automation:
-
-  * Excel file updated with new data
-  * Refresh button in Power BI updates all visuals and calculations
-  * Exported reports as **PDF** for distribution
-
----
-
-## Dashboard Snapshot
-
-> *(Insert a screenshot of your dashboard here)*
-> Save a screenshot as `dashboard.png` and link it:
-> `![Dashboard Preview](dashboard.png)`
-
----
-
-##  Folder Structure
-
-```
-Sales-Forecasting-Dashboard/
-├── sales_data.xlsx               # Source dataset (2015–2018)
-├── SalesForecast.pbix            # Power BI dashboard file
-├── dashboard.png                 # Screenshot of dashboard
-└── README.md                     # Project documentation
-
-
-
-
 # Project - 2
 
 # Machine Uptime & Fault Trend Analysis in Tableau
@@ -264,4 +144,125 @@ Schedule the notebook using Colab + Google Drive
 Integrate with email to send PDF reports
 
 Add real-time alert generation for anomalies
+
+--------------------------------------------------------------------------------------------------------------------------
+
+* # Project - 1
+
+#  Sales Forecasting Dashboard (Power BI + Excel)
+
+This project demonstrates the analysis and visualization of 3 years of historical sales data (2015–2018) using **Power BI Desktop**. It includes trend analysis, interactive reporting, and sales forecasting using DAX expressions.
+
+---
+
+##  Project Objectives
+
+- Analyze 3 years of historical sales data to identify trends and seasonality
+- Forecast future sales using DAX (3-month moving average)
+- Build an interactive dashboard with slicers for year, category, and region
+- Enable monthly report refresh using Excel as a data source
+
+---
+
+## Tools Used
+
+- **Power BI Desktop (Free Version)**
+- **Microsoft Excel (as data source)**
+- **DAX (Data Analysis Expressions)** for calculated columns and forecasting
+- **Power Query** for basic transformations
+
+---
+
+## Data Overview
+
+The dataset contains the following fields:
+
+- `OrderDate` — Sales transaction date
+- `Sales` — Sales revenue amount
+- `Product` — Product name
+- `Category` — Product category
+- `Region` — Sales region
+- *(No Profit or Quantity fields used)*
+
+---
+
+## Steps Performed
+
+### 1. **Data Preparation**
+- Created a sales dataset covering the period **2015–2018** using Excel
+- Cleaned the dataset and ensured correct data types (e.g., date format)
+
+### 2. **Data Import in Power BI**
+- Loaded Excel data into Power BI using **Get Data → Excel**
+- Applied basic transformations using **Power Query**
+
+### 3. **Created a Date Table**
+- Generated a `DateTable` using DAX:
+  ```DAX
+  DateTable = CALENDAR(MIN(Sales_Data[OrderDate]), MAX(Sales_Data[OrderDate]))
+````
+
+* Added columns: Year, Month, Quarter
+
+### 4. **Data Modeling**
+
+* Created relationships between `DateTable` and `Sales_Data[OrderDate]`
+* Verified correct data model with star schema
+
+### 5. **Forecasting Using DAX**
+
+* Created a DAX measure for 3-month moving average forecast:
+
+  ```DAX
+  Sales Forecast = 
+  AVERAGEX(
+      DATESINPERIOD('DateTable'[Date], MAX('DateTable'[Date]), -3, MONTH),
+      CALCULATE(SUM('Sales_Data'[Sales]))
+  )
+  ```
+
+### 6. **Built the Dashboard**
+
+* Key visuals included:
+
+  * Line chart for actual vs forecasted sales
+  * Sales by Category (Clustered Column Chart)
+  * Sales by Region (TreeMap)
+  * Monthly Sales Trend (Line Chart)
+  * KPI Cards (Total Sales, Average Sale, Max Sale, Order Count)
+* Added **slicers** for:
+
+  * Date Range
+  * Year
+  * Category
+  * Region
+
+### 7. **Refresh & Export**
+
+* Simulated monthly report automation:
+
+  * Excel file updated with new data
+  * Refresh button in Power BI updates all visuals and calculations
+  * Exported reports as **PDF** for distribution
+
+---
+
+##  Dashboard Snapshot
+
+> *(Insert a screenshot of your dashboard here)*
+> Save a screenshot as `dashboard.png` and link it:
+> `![Dashboard Preview](dashboard.png)`
+
+---
+
+## 📌 Folder Structure
+
+```
+Sales-Forecasting-Dashboard/
+├── sales_data.xlsx               # Source dataset (2015–2018)
+├── SalesForecast.pbix            # Power BI dashboard file
+├── dashboard.png                 # Screenshot of dashboard
+└── README.md                     # Project documentation
+```
+
 
