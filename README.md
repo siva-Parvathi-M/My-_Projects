@@ -1,10 +1,5 @@
  * # Project - 1 *
 
-Here’s a professional `README.md` file tailored for your **Sales Forecasting Dashboard (Power BI + Excel)** project — perfect for showcasing on GitHub:
-
----
-
-````markdown
 #  Sales Forecasting Dashboard (Power BI + Excel)
 
 This project demonstrates the analysis and visualization of 3 years of historical sales data (2015–2018) using **Power BI Desktop**. It includes trend analysis, interactive reporting, and sales forecasting using DAX expressions.
